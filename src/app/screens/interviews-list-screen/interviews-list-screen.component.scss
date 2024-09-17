@@ -11,9 +11,17 @@ mat-card {
 .nav-banner {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
   font-size: var(--mediumFontSize);
   margin-bottom: 15px;
+
+  >div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }
 
 .mat-row {

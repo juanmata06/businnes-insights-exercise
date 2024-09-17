@@ -1,6 +1,29 @@
 <div class="container">
   <div>
     <div class="nav-banner">
+      <div>
+        <button 
+          (click)="appliedFilter = ''; getInterviewsList()"
+          class="secondary-button" 
+          [ngClass]="{'selected-button': appliedFilter == ''}"
+        >
+          {{'Todos los registros'}}
+        </button>
+        <button 
+          (click)="appliedFilter = 'first'; getInterviewsList()"
+          class="secondary-button" 
+          [ngClass]="{'selected-button': appliedFilter == 'first'}"
+        >
+          {{'Primera entrevista'}}
+        </button>
+        <button 
+          (click)="appliedFilter = 'second'; getInterviewsList()"
+          class="secondary-button" 
+          [ngClass]="{'selected-button': appliedFilter == 'second'}"
+        >
+          {{'Segunda entrevista'}}
+        </button>
+      </div>
       <a class="main-button" [routerLink]="'interview/create'">
         {{'Crear entrevista'}}
       </a>
@@ -76,7 +99,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="11">
+          <td class="mat-cell text-start" colspan="11">
             {{tableDataLoading ? 'Cargando entrevistas...' : 'No hay información disponible'}}
           </td>
         </tr>

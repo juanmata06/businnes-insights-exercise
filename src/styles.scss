@@ -51,14 +51,28 @@ h2 {
   font-weight: normal !important;
 }
 
-button.main-button, a.main-button {
+button.main-button, a.main-button, button.secondary-button, a.secondary-button {
   font-weight: bold;
-  background-color: var(--mainColor);
-  color: var(--white) !important;
   border: unset;
   border-radius: 25px !important;
   padding: 5px 15px;
   font-size: var(--smallFontSize) !important;
+  white-space: nowrap;
+}
+
+.main-button{
+  background-color: var(--mainColor);
+  color: var(--white) !important;
+}
+
+.secondary-button{
+  background-color: var(--gray);
+  color: var(--black) !important;
+}
+
+.main-button.selected-button, .secondary-button.selected-button{
+  box-shadow: 0 4px 10px #0000001a;
+  border: 1px solid;
 }
 
 a {

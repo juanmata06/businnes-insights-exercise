@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
+import { ReplaySubject } from "rxjs";
 import { iInterview } from "src/app/logic/models/interview.interface";
 import { InterviewService } from "src/app/logic/services/interview.service";
 
@@ -16,6 +17,7 @@ export class InterviewsListScreenComponent implements OnInit {
   * ------------------------------------------------------------------------------------------------------------------------------
   */
   loading: boolean = false;
+  private _unsubscribeAll: ReplaySubject<boolean> = new ReplaySubject(1);
   tableDataLoading: boolean = false;
   displayedColumns: string[] = [
     'first_name', 'last_name',
@@ -24,6 +26,8 @@ export class InterviewsListScreenComponent implements OnInit {
     'actions'
   ];
   dataSource = new MatTableDataSource<iInterview>([]);
+  appliedFilter = '';
+
   /**
    * -----------------------------------------------------------------------------------------------------------------------------
    * LYFECYCLE METHODS
@@ -33,22 +37,41 @@ export class InterviewsListScreenComponent implements OnInit {
     private _interviewService: InterviewService
   ) {
     this.loading = true;
+    this.appliedFilter = localStorage.getItem('currentAppliedFilter') || '';
     this.getInterviewsList();
   }
 
   ngOnInit(): void { }
+
+  ngOnDestroy() {
+    this._unsubscribeAll.next(true);
+    this._unsubscribeAll.complete();
+  }
 
   /**
   * ------------------------------------------------------------------------------------------------------------------------------
   * PRIVATE METHODS
   * ------------------------------------------------------------------------------------------------------------------------------
   */
-  private getInterviewsList(): void {
+  public getInterviewsList(): void {
+    this.tableDataLoading = true;
+    localStorage.setItem(`currentAppliedFilter`, this.appliedFilter);
+    this.dataSource = new MatTableDataSource<iInterview>([]);
     this._interviewService.getInterviewsList().subscribe({
       next: (response: iInterview[]) => {
         if (!response)
           return
-        this.dataSource = new MatTableDataSource<iInterview>(response);
+        this.dataSource = new MatTableDataSource<iInterview>(
+          response.filter((interview: iInterview) => {
+            if (this.appliedFilter === 'first') {
+              return interview.is_first_interview === true;
+            } else if (this.appliedFilter === 'second') {
+              return interview.is_first_interview === false;
+            }
+            return true;
+          })
+        );
+        this.tableDataLoading = false;
         localStorage.setItem(`currentInterviews`, JSON.stringify(response));
       }
     });
