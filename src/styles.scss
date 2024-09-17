@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+  * ------------------------------------------------------------------------------------------------------------------------------
+  * General styles for HTML tags and root const vars:
+  * ------------------------------------------------------------------------------------------------------------------------------
+  *
+**/
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--white) !important;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Libre Franklin', sans-serif !important;
+}
+
+:root {
+  --white: #fef8ec;
+  --black: #333333;
+  --gray: #e6e6e6;
+  --mainColor: #0353a4;
+  --mainDarkColor: #003049;
+  --bigTitleFontSize: 18px;
+  --smallTitleFontSize: 16px;
+  --mediumFontSize: 14px;
+  --smallFontSize: 12px;
+  --fisrtInterviewColor: #b9d6f2;
+  --secondInterviewColor: #c7f88c;
+}
+
+h1 {
+  font-size: var(--bigTitleFontSize) !important;
+  font-weight: normal !important;
+}
+
+h2 {
+  font-size: var(--smallTitleFontSize) !important;
+  font-weight: normal !important;
+}
+
+h2 {
+  font-size: var(--smallTitleFontSize) !important;
+  font-weight: normal !important;
+}
+
+button.main-button, a.main-button {
+  font-weight: bold;
+  background-color: var(--mainColor);
+  color: var(--white) !important;
+  border: unset;
+  border-radius: 25px !important;
+  padding: 5px 15px;
+  font-size: var(--smallFontSize) !important;
+}
+
+a {
+  color: unset !important;
+  text-decoration: unset !important;
+}
+
+table {
+  box-shadow: none !important;
+
+  th,
+  td {
+    font-size: var(--mediumFontSize);
+    text-align: center !important;
+  }
+
+  th {
+    font-weight: bold;
+  }
+}
+
+/**
+  * ------------------------------------------------------------------------------------------------------------------------------
+  * General styles for material components:
+  * ------------------------------------------------------------------------------------------------------------------------------
+  *
+**/
+.mat-mdc-table .mdc-data-table__header-row {
+  background-color: var(--gray);
+}
+
+.material-icons {
+  font-family: 'Material Icons' !important;
+}
+
+/**
+  * ------------------------------------------------------------------------------------------------------------------------------
+  * My general styles:
+  * ------------------------------------------------------------------------------------------------------------------------------
+  *
+**/
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  justify-content: center;
+  padding: 0px 30px !important;
+}
+
+.container> :first-child {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.card-styles {
+  padding: 20px;
+  border-radius: 10px !important;
+}
+
+.form-control-container {
+  // @media (max-width:768px) {
+  margin-bottom: 10px;
+  // }
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-size: var(--mediumFontSize);
+    font-weight: bold;
+    padding-left: 5px;
+  }
+
+  input,
+  select {
+    height: 30px;
+  }
+
+  input,
+  select,
+  textarea {
+    border: 2px solid var(--gray);
+    border-radius: 10px;
+    padding: 0 10px;
+  }
+
+  small.error-message {
+    // font-weight: bold;
+    padding-left: 5px;
+    color: red;
+  }
+}

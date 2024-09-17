@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ab5e9ad9-2de5-4fb8-862f-9646ed2d53e1",
+    "first_name": "Juan",
+    "last_name": "Pérez",
+    "email": "juanperez@ejemplo.com",
+    "phone": "123456789",
+    "is_first_interview": true,
+    "date_time": "2024-09-15T10:00:00Z",
+    "physique_description": "Alto y bien arreglado.",
+    "aptitude_description": "Aprendiz rápido y altamente adaptable.",
+    "technical_questions_note": 8,
+    "technical_test_note": 7
+  },
+  {
+    "id": "7c789863-c43b-4b49-8e18-2affeee35276",
+    "first_name": "María",
+    "last_name": "Gómez",
+    "email": "mariagomez@ejemplo.com",
+    "phone": null,
+    "is_first_interview": true,
+    "date_time": "2024-09-15T11:00:00Z",
+    "physique_description": "Complexión promedio, vestimenta formal.",
+    "aptitude_description": "Habilidades sólidas de pensamiento crítico.",
+    "technical_questions_note": 9,
+    "technical_test_note": 8
+  },
+  {
+    "id": "b25b408e-f125-43ff-8512-8c750638f0fd",
+    "first_name": "Carlos",
+    "last_name": "García",
+    "email": "carlosgarcia@ejemplo.com",
+    "phone": "987654321",
+    "is_first_interview": true,
+    "date_time": "2024-09-15T12:00:00Z",
+    "physique_description": "Atlético, postura confiada.",
+    "aptitude_description": "Excelentes habilidades de comunicación y resolución de problemas.",
+    "technical_questions_note": 7,
+    "technical_test_note": 7
+  },
+  {
+    "id": "22d0c466-eb54-4637-8b71-381640b8ecc5",
+    "first_name": "Ana",
+    "last_name": "López",
+    "email": "analopez@ejemplo.com",
+    "phone": "543216789",
+    "is_first_interview": true,
+    "date_time": "2024-09-15T13:00:00Z",
+    "physique_description": "Baja estatura, apariencia profesional.",
+    "aptitude_description": "Muy organizada y eficiente.",
+    "technical_questions_note": 8,
+    "technical_test_note": 9
+  },
+  {
+    "id": "2083517a-46dc-4556-9217-7e42e4c713b3",
+    "first_name": "Luis",
+    "last_name": "Martínez",
+    "email": "luismartinez@ejemplo.com",
+    "phone": null,
+    "is_first_interview": true,
+    "date_time": "2024-09-15T14:00:00Z",
+    "physique_description": "Mediana estatura, vestimenta casual.",
+    "aptitude_description": "Creativo y con gran capacidad de innovación.",
+    "technical_questions_note": 9,
+    "technical_test_note": 8
+  }
+]

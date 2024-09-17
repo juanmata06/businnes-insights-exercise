@@ -1,0 +1,39 @@
+mat-card {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-banner {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--mediumFontSize);
+  margin-bottom: 15px;
+}
+
+.mat-row {
+  opacity: 1;
+  height: 45px;
+}
+
+
+span.interview-badge {
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-size: var(--smallFontSize);
+  font-weight: bold;
+  // color: white;
+
+  &.first {
+    background-color: var(--fisrtInterviewColor);
+  }
+
+  &.second {
+    background-color: var(--secondInterviewColor);
+  }
+}

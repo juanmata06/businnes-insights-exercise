@@ -1,0 +1,151 @@
+<div class="container">
+  <div>
+    <div class="go-back-banner">
+      <a [routerLink]="'/'">
+        {{'Volver al listado'}}
+      </a>
+    </div>
+    <mat-card appearance="outlined" class="card-styles">
+      <form [formGroup]="form" class="row">
+        <div class="col-12 form-control-container" *ngIf="isFormSubmitted">
+          <small class="error-message">
+            {{'Verifica los errores con campos.'}}
+          </small>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="first_name">
+            {{'Nombre'}}*
+          </label>
+          <input 
+            type="text" 
+            formControlName="first_name" 
+            name="first_name"
+            (input)="isFormSubmitted = false"
+          >
+          <small *ngIf="notValidField('first_name')" class="error-message">
+            {{'Este campo es obligatorio (mínimo 2 carácteres)'}}
+          </small>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="last_name">
+            {{'Apellido'}}*
+          </label>
+          <input 
+            type="text" 
+            formControlName="last_name" 
+            name="last_name"
+            (input)="isFormSubmitted = false"
+          >
+          <small *ngIf="notValidField('last_name')" class="error-message">
+            {{'Este campo es obligatorio (mínimo 2 carácteres)'}}
+          </small>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="email">
+            {{'Correo electrónico'}}*
+          </label>
+          <input 
+            type="text" 
+            formControlName="email" 
+            name="email"
+            (input)="isFormSubmitted = false"
+          >
+          <small *ngIf="notValidField('email')" class="error-message">
+            {{'Este campo es obligatorio (Por favor, introduce un email válido)'}}
+          </small>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="phone">
+            {{'Teléfono'}}
+          </label>
+          <input 
+            type="text" 
+            formControlName="phone" 
+            name="phone"
+            (input)="isFormSubmitted = false"
+          >
+          <small *ngIf="notValidField('phone')" class="error-message">
+            {{'Formato telefónico incorrecto (9 números)'}}
+          </small>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-12 form-control-container">
+          <label>
+            {{'¿Primera entrevista?'}}
+          </label>
+          <select [(ngModel)]="isFirstInterview" (ngModelChange)="isFirstInterview = ($event == 'true')">
+            <option [value]="true" selected>
+              {{'Si'}}
+            </option>
+            <option [value]="false">
+              {{'No'}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <form *ngIf="isFirstInterview == true" [formGroup]="form" class="row">
+        <div class="col-md-6 form-control-container">
+          <label for="physique_description">
+            {{'Descripción física'}}
+          </label>
+          <textarea 
+            formControlName="physique_description" 
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="aptitude_description">
+            {{'Descripción de aptitudes'}}
+          </label>
+          <textarea 
+            formControlName="aptitude_description" 
+            rows="5"
+          ></textarea>
+        </div>
+      </form>
+      <form *ngIf="isFirstInterview == false" [formGroup]="form" class="row">
+        <div class="col-md-6 form-control-container">
+          <label for="technical_questions_note">
+            {{'Nota preguntas técnicas'}}*
+          </label>
+          <mat-radio-group 
+            aria-label="Select an option" 
+            (change)="technicalQuestionsNote = $event.value; isFormSubmitted = false"
+            name="technical_questions_note">
+            <ng-container *ngFor="let value of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+              <mat-radio-button [value]="value" [checked]="technicalQuestionsNote === value">
+                {{ value }}
+              </mat-radio-button>
+            </ng-container>
+          </mat-radio-group>
+          <small *ngIf="isTechnicalQuestionsNoteNotValid()" class="error-message">
+            {{'Este campo es obligatorio (seleccione una opción)'}}
+          </small>
+        </div>
+        <div class="col-md-6 form-control-container">
+          <label for="technical_test_note">
+            {{'Nota prueba técnica'}}
+          </label>
+          <mat-radio-group 
+            aria-label="Select an option" 
+            (change)="technicalTestNote = $event.value"
+            name="technical_test_note">
+            <ng-container *ngFor="let value of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+              <mat-radio-button [value]="value" [checked]="technicalTestNote === value">
+                {{ value }}
+              </mat-radio-button>
+            </ng-container>
+          </mat-radio-group>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+          <button (click)="saveOrEdit()" class="main-button">
+            {{isCreatingNewinterview ? 'Crear entrevista' : 'Guardar cambios'}}
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.container {
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-card {
+  width: 100%;
+}
+
+:host ::ng-deep mat-radio-group {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+:host ::ng-deep mat-radio-button {
+  display: block;
+  width: 20px;
+
+  .mdc-form-field {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.go-back-banner {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--mediumFontSize);
+  margin-bottom: 15px;
+
+  a:hover {
+    // font-weight: bold;
+    color: var(--mainColor) !important;
+  }
+}
